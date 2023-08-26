@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-hpa-ingress
+  namespace: nginx-hpa
+spec:
+  rules:
+    - host: kaisen-1043696480.eu-west-3.elb.amazonaws.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: nginx-svc
+                port:
+                  number: 30007
